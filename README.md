@@ -17,25 +17,25 @@ Also , if you want to launch your NFT collection on a website aliging with your 
 you will not find good platforms.
 
 This was a calling moment for us.<br/>
-We took the pledge to provide Web3 assets renting in an easy way.
+We took the pledge to provide renting of Web3 assets in an easy way.
 
 ## What it does
 We provide services for
 
--   Creators
+-   Digital Artists
 -   NFT Holders
--   Developers
+-   Blockchain Developers
 -   Users
 
-### Creators
-Creators are those who have created an NFT Collection.<br/>
+### Digital Artists
+Digital Artists are those who have created an NFT Collection.<br/>
 For whitelisting and sale of their collection, we provide **Rentable Dapps** made by the best designers and developers in the space.
 
 ### NFT Holders
 NFT holders can **Rent their NFTs** for specific time in exchange of some money while still being the owner of them .<br/>
 Good way to earn passive income. 
 
-### Developers
+### Blockchain Developers
 They can build a website that does whitelisting and sale of the NFTs <br/>
 by interacting with already deployed smart contracts. <br/>
 These deployed contracts are dynamic means that same website <br/> can be rented for different collections, time after time. 
@@ -124,14 +124,14 @@ We have achieved both User Experience and Decentralized storage properties with 
 
 ## What's next for RentWeb3
 We are aiming to be the number one marketplace for Renting Web3 assets Globally.<br/>
-Currently we are dealing with NFT and Dapp renting that are NFT centered. <br/>
+Currently we are dealing with NFT and Dapp renting ( that is NFT centered ). <br/>
 We are implementing their basic features, but in distant future we are aiming to implement <br/>
 
 
     Dashboard Panel for Dapp Uploader
     Dashboard Panel for NFT Uploader
-    Integration of Rented NFT with Metaverse Games
-    Bringing more Rentable assets to the space
+    Integration of Rented NFT with NFT strategy Games
+    Bringing more rentable assets to the space
     
     
     
