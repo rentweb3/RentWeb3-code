@@ -9,7 +9,6 @@ export const tronConnect = async () => {
     //      debugger;
     let tronlink = await window.tronLink;
     if (!tronlink) {
-      alert("Please Install tronlink First ");
       return null;
     }
     try {
@@ -19,9 +18,9 @@ export const tronConnect = async () => {
     }
 
     let tronWeb = await tronlink?.tronWeb;
-    if (!tronWeb ) return null;
+    if (!tronWeb) return null;
     let address = tronWeb?.defaultAddress;
-    if(!address) return null;
+    if (!address) return null;
     return address?.base58;
   } catch (err) {
     console.log("Error: ", err);

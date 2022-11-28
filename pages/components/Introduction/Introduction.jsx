@@ -52,8 +52,12 @@ function Introduction() {
           >
             Time to Rent Web3 Assets
           </Heading>
-          <Box width={["80vw", "80vw", "80vw", "40vw"]}>
-            <Box fontSize={18} textColor={"whiteAlpha.800"}>
+          <VStack
+            width={["80vw", "80vw", "80vw", "40vw"]}
+            spacing={4}
+            align={"left"}
+          >
+            <Box fontSize={20} textColor={"whiteAlpha.800"}>
               RentWeb3 is a place where you can quickly start Renting your NFTs
               and Various Dapps.We provide you with a simple series of steps to
               get you help with whitelisting , presale and Public sale of your
@@ -63,7 +67,7 @@ function Introduction() {
             <Box fontSize={22} fontWeight={"700"}>
               So What are you waiting for ?
             </Box>
-          </Box>
+          </VStack>
           <HStack spacing={10}>
             <LinkButton
               href={"/Create"}
