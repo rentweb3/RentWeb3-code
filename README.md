@@ -1,24 +1,6 @@
 ![WhatsApp Image 2022-11-15 at 2 18 23 AM](https://user-images.githubusercontent.com/71306738/202645378-173ab00f-e9f2-4373-9280-b090402b8f16.jpeg)
 
 
-### Project Name:  RentWeb3
-### Project Track: NFT & Gaming
-### Team Name: RentWeb3
-### Team Member(s): 2 [@seemal-arif , @umarkhatab465]
-### Project Details :point_down: 
-For test Instructions read this document. 
-https://docs.google.com/presentation/d/1K7VjFTZlBm8Kb1OLS_AryejLxx2gKepQpiN0GP66D-E/edit?usp=sharing
-
-### Website URL : https://rent-web3-v1.vercel.app
-### Github Repository link :  https://github.com/umaresso/Rent-Web3-Polygon-Included
-### Video link : https://www.youtube.com/watch?v=2onwsWD8uuE
-
-## Project Goal
- We are aiming to provide a marketplace to rent Web3 assets like NFTs and Dapps , backed up by IPFS and Smart contracts.
-
-
-
-## Project Info: 
 ## Inspiration
 Web3 is booming. Future is promising with the opportunities Metaverse will bring.<br/>
 But some Web3 assets became the cake of rich since they were launched - NFTs for example.
@@ -138,12 +120,7 @@ When we wanted to show available NFTs and Dapps for rent <br/>
 we wanted the storage to be decentralized but smart contract performs a bunch of stuff with the records.<br/>
 We could load available NFTs from smart contracts but it is a slow process and User Experience might suffer. <br/>
 We have achieved both User Experience and Decentralized storage properties with **IPFS and filecoin's web3 storage**.
-## What we learned
 
-      Working with multiple Blockchains
-      Crafting a good user experience
-      Built industry level Smart Contracts
-      Grasped strong understanding of IPFS ,Tron development tools and NFTs in depth
 ## What's next for RentWeb3
 We are aiming to be the number one marketplace for Renting Web3 assets Globally.<br/>
 Currently we are dealing with NFT and Dapp renting that are NFT centered. <br/>
@@ -155,4 +132,8 @@ We are implementing their basic features, but in distant future we are aiming to
     Integration of Rented NFT with Metaverse Games
     Bringing more Rentable assets to the space
     
+    
+    
+For detailed ellaboration [check here](https://docs.google.com/presentation/d/1K7VjFTZlBm8Kb1OLS_AryejLxx2gKepQpiN0GP66D-E/edit?usp=sharing)
+
     
