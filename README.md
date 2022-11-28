@@ -1,24 +1,7 @@
-![WhatsApp Image 2022-11-15 at 2 18 23 AM](https://user-images.githubusercontent.com/71306738/202645378-173ab00f-e9f2-4373-9280-b090402b8f16.jpeg)
+
+[![Everything Is AWESOME](https://yt-embed.herokuapp.com/embed?v=2onwsWD8uuE)](https://www.youtube.com/watch?v=2onwsWD8uuE "Everything Is AWESOME")
 
 
-### Project Name:  RentWeb3
-### Project Track: NFT & Gaming
-### Team Name: RentWeb3
-### Team Member(s): 2 [@seemal-arif , @umarkhatab465]
-### Project Details :point_down: 
-For test Instructions read this document. 
-https://docs.google.com/presentation/d/1K7VjFTZlBm8Kb1OLS_AryejLxx2gKepQpiN0GP66D-E/edit?usp=sharing
-
-### Website URL : https://rent-web3-v1.vercel.app
-### Github Repository link :  https://github.com/umaresso/Rent-Web3-Polygon-Included
-### Video link : https://www.youtube.com/watch?v=2onwsWD8uuE
-
-## Project Goal
- We are aiming to provide a marketplace to rent Web3 assets like NFTs and Dapps , backed up by IPFS and Smart contracts.
-
-
-
-## Project Info: 
 ## Inspiration
 Web3 is booming. Future is promising with the opportunities Metaverse will bring.<br/>
 But some Web3 assets became the cake of rich since they were launched - NFTs for example.
@@ -34,25 +17,25 @@ Also , if you want to launch your NFT collection on a website aliging with your 
 you will not find good platforms.
 
 This was a calling moment for us.<br/>
-We took the pledge to provide Web3 assets renting in an easy way.
+We took the pledge to provide renting of Web3 assets in an easy way.
 
 ## What it does
 We provide services for
 
--   Creators
+-   Digital Artists
 -   NFT Holders
--   Developers
+-   Blockchain Developers
 -   Users
 
-### Creators
-Creators are those who have created an NFT Collection.<br/>
+### Digital Artists
+Digital Artists are those who have created an NFT Collection.<br/>
 For whitelisting and sale of their collection, we provide **Rentable Dapps** made by the best designers and developers in the space.
 
 ### NFT Holders
 NFT holders can **Rent their NFTs** for specific time in exchange of some money while still being the owner of them .<br/>
 Good way to earn passive income. 
 
-### Developers
+### Blockchain Developers
 They can build a website that does whitelisting and sale of the NFTs <br/>
 by interacting with already deployed smart contracts. <br/>
 These deployed contracts are dynamic means that same website <br/> can be rented for different collections, time after time. 
@@ -138,21 +121,20 @@ When we wanted to show available NFTs and Dapps for rent <br/>
 we wanted the storage to be decentralized but smart contract performs a bunch of stuff with the records.<br/>
 We could load available NFTs from smart contracts but it is a slow process and User Experience might suffer. <br/>
 We have achieved both User Experience and Decentralized storage properties with **IPFS and filecoin's web3 storage**.
-## What we learned
 
-      Working with multiple Blockchains
-      Crafting a good user experience
-      Built industry level Smart Contracts
-      Grasped strong understanding of IPFS ,Tron development tools and NFTs in depth
 ## What's next for RentWeb3
 We are aiming to be the number one marketplace for Renting Web3 assets Globally.<br/>
-Currently we are dealing with NFT and Dapp renting that are NFT centered. <br/>
+Currently we are dealing with NFT and Dapp renting ( that is NFT centered ). <br/>
 We are implementing their basic features, but in distant future we are aiming to implement <br/>
 
 
     Dashboard Panel for Dapp Uploader
     Dashboard Panel for NFT Uploader
-    Integration of Rented NFT with Metaverse Games
-    Bringing more Rentable assets to the space
+    Integration of Rented NFT with NFT strategy Games
+    Bringing more rentable assets to the space
     
+    
+    
+For detailed ellaboration [check here](https://docs.google.com/presentation/d/1K7VjFTZlBm8Kb1OLS_AryejLxx2gKepQpiN0GP66D-E/edit?usp=sharing)
+
     
