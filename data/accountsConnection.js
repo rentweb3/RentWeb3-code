@@ -1,10 +1,8 @@
 /*
   connectWallet: Connects the MetaMask wallet
 */
-import { BigNumber, Contract, ethers, providers, utils } from "ethers";
+import { ethers, providers } from "ethers";
 import Web3Modal from "web3modal";
-import { use } from "@maticnetwork/maticjs";
-import { Web3ClientPlugin } from "@maticnetwork/maticjs-ethers";
 
 export const connectWallet = async (web3ModalRef) => {
   try {
