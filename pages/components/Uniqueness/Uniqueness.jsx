@@ -29,7 +29,6 @@ function Uniqueness() {
             }
             btnLink={"https://github.com/rentweb3/Rentweb3-docs"}
             btnCaption={"Know More"}
-            bg={"#0f4df7"}
           />
         </WrapItem>
         <WrapItem>
@@ -40,7 +39,6 @@ function Uniqueness() {
             }
             btnCaption={"Rent Dapp"}
             btnLink={"/RentDappInformation"}
-            bg={"#ff3070"}
           />
         </WrapItem>
         <WrapItem>
@@ -53,7 +51,6 @@ function Uniqueness() {
             btnLink={
               "https://github.com/rentweb3/RentWeb3-code/tree/master/contracts"
             }
-            bg={"#38A169"}
           />
         </WrapItem>
       </Wrap>

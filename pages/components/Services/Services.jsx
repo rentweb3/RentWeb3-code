@@ -41,13 +41,9 @@ function Services() {
           <ServiceCard
             title={"Collection Launch"}
             description={
-              "For a digital creator like you , we procide you with speed , ease and low cost NFT Collection launch way without writing any code and spending zero dollars"
+              "For a digital creator like you , we provide you with speed , ease and low cost NFT Collection launch way without writing any code and spending zero dollars"
             }
-            btnHandler={() => {
-              alert(
-                "We are currently working on Docs\nThank you for your patience "
-              );
-            }}
+            btnLink={"https://github.com/rentweb3/Rentweb3-docs"}
             btnCaption={"Know More"}
           />
         </WrapItem>
@@ -55,13 +51,8 @@ function Services() {
           <ServiceCard
             title={"Dapps renting"}
             description={
-              "For each whitelist or sale smart contract that you created on our platform, you can rent a dapp of your choice.These dappsare built by one of the best developers in the space"
+              "For each whitelist or sale smart contract that you created on our platform, you can rent a dapp of your choice.These dapps are built by one of the best developers in the space"
             }
-            btnHandler={() => {
-              alert(
-                "We are currently working on Docs\nThank you for your patience "
-              );
-            }}
             btnCaption={"Rent Dapp"}
             btnLink={"/RentDappInformation"}
           />
@@ -70,13 +61,8 @@ function Services() {
           <ServiceCard
             title={"NFT Renting"}
             description={
-              "Lend your favorite NFTs at low cost and use in games or metaverse. If you are an NFT holder , you can earn passive income while still being the owner of that NFT."
+              "Rent your favorite NFTs at low cost and use them in games or metaverse. If you are an NFT holder , you can earn passive income while still being the owner of that NFT."
             }
-            btnHandler={() => {
-              alert(
-                "We are currently working on Docs\nThank you for your patience "
-              );
-            }}
             btnCaption={"Rent NFTs"}
             btnLink={"/ExploreNfts"}
           />

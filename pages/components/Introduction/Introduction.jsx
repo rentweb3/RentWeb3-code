@@ -26,16 +26,20 @@ function Introduction() {
 
   return (
     <Box
-      width={"100%"}
+      width={"100vw"}
       color={textColor}
       height={"fit-content"}
+      minH={"100vh"}
       bg={"black"}
       paddingBottom={10}
       paddingTop={10}
     >
       <Stack
-        spacing={[50, 30, 30, 10]}
+        align={"center"}
+        justify={"center"}
+        width={"100%"}
         direction={["column", "column", "column", "row"]}
+        spacing={4}
       >
         <VStack
           align={"left"}
@@ -44,20 +48,19 @@ function Introduction() {
           spacing={5}
           width={["100%", "100%", "100%", "60%"]}
           // paddingTop={["40vh", "40vh", "0vh"]}
-          paddingTop={"15vh"}
         >
           <Heading
-            fontSize={["2em", "4em", "5em"]}
-            width={["80vw", "80vw", "80vw", "40vw"]}
+            fontSize={["2em", "3em", "5em"]}
+            width={["70vw", "70vw", "70vw", "40vw"]}
           >
             Time to Rent Web3 Assets
           </Heading>
           <VStack
-            width={["80vw", "80vw", "80vw", "40vw"]}
+            width={["70vw", "70vw", "70vw", "40vw"]}
             spacing={4}
             align={"left"}
           >
-            <Box fontSize={20} textColor={"whiteAlpha.800"}>
+            <Box fontSize={[16, 18, 20]} textColor={"whiteAlpha.800"}>
               RentWeb3 is a place where you can quickly start Renting your NFTs
               and Various Dapps.We provide you with a simple series of steps to
               get you help with whitelisting , presale and Public sale of your
@@ -91,14 +94,13 @@ function Introduction() {
         </VStack>
 
         <VStack
-          paddingTop={["5vh", "2vh", "2vh", "0"]}
+          width={"70vw"}
+          paddingTop={["0", "0", "17vh"]}
           bg={"black"}
-          justifyContent={"center"}
-          height={"100vh"}
+          align={"center"}
         >
           <Img
-            height={["90vh", "80vh", "fit-content"]}
-            width={"90%"}
+            height={["80vh", "70vh", "60vh"]}
             border={"10px solid black"}
             borderRadius={"40px"}
             transition={"200ms all ease-in-out"}

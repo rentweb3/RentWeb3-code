@@ -1,4 +1,12 @@
-import { Box, Button, Center, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  Link,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
 import LinkButton from "../LinkButton/LinkButton";
 
@@ -24,13 +32,14 @@ function ServiceCard(props) {
     >
       <Heading fontSize={"30px"}>{title}</Heading>
       <Text>{description}</Text>
-      <Button
-        colorScheme={"linkedin"}
-        href={btnLink ? btnLink : null}
-        onClick={btnHandler ? btnHandler : () => {}}
-      >
-        {btnCaption}
-      </Button>
+      <Link href={btnLink ? btnLink : "#"}>
+        <Button
+          colorScheme={"linkedin"}
+          onClick={btnHandler ? btnHandler : () => {}}
+        >
+          {btnCaption}
+        </Button>
+      </Link>
     </VStack>
   );
 }

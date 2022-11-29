@@ -17,7 +17,7 @@ function Mission() {
   }
 
   return (
-    <Box bg={"white"} padding={"20px"}>
+    <Box bg={"white"} padding={"40px"}>
       <Stack
         bg={"#dedfe0"}
         color={"black"}
@@ -26,11 +26,12 @@ function Mission() {
         padding={["100px", "50px", "30px", "10px"]}
         align={("space-between", "space-between", "center")}
         borderRadius={"10px"}
-        height={"100vh"}
       >
         <VStack
           padding={"100px"}
-          height={"100vh"}
+          paddingTop={"50px"}
+          height={"fit-content"}
+          minH={"80vh"}
           paddingLeft={"5vw"}
           paddingBottom={["10vh", "8vh", "6vh", "4vh"]}
           align={"left"}
@@ -38,7 +39,12 @@ function Mission() {
           justify={"center"}
         >
           <Heading fontSize={"3.5em"}>Our Mission</Heading>
-          <Text fontSize={20} textColor={"black"} width={"35vw"}>
+          <Text
+            fontSize={20}
+            textColor={"black"}
+            width={"35vw"}
+            fontWeight={"400"}
+          >
             Rentweb3 is on its mission to break the monoply of rich in web3 and
             make web3 assets affordable to almost everyone who could not addord
             these assets due to their high prices. A detailed view of our
@@ -55,7 +61,7 @@ function Mission() {
         </VStack>
         <Img
           justifyItems={"flex-end"}
-          width={"40vw"}
+          width={["80vw", "65vw", "40vw"]}
           border={"1px solid black"}
           borderRadius={"50px"}
           src="https://believein.net/img/containers/main/projects/MortarPestle_BrandDevelopment/mp_projectimages_19_r.jpg/86ee68ff3b389554395cbc37a0a9a5b1.jpg"

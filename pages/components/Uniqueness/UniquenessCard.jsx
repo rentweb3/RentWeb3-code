@@ -1,4 +1,12 @@
-import { Box, Button, Center, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  Link,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
 import LinkButton from "../LinkButton/LinkButton";
 
@@ -8,13 +16,13 @@ function UnqiuenessCard(props) {
   let btnCaption = props.btnCaption;
   let btnHandler = props.btnHandler;
   let btnLink = props.btnLink;
-  let bg = props.bg;
 
   return (
     <VStack
       padding={"20px"}
-      bg={bg}
-      height={"60vh"}
+      bg={"black"}
+      height={"fit-content"}
+      minH={"65vh"}
       width={"25vw"}
       minW={"300px"}
       color={"white"}
@@ -26,16 +34,17 @@ function UnqiuenessCard(props) {
       <Heading fontWeight={"700"} fontSize={"2rem"}>
         {title}
       </Heading>
-      <Text height={"22vh"} fontSize={"1.2rem"}>
+      <Text padding={"20px"} fontSize={"1.2rem"}>
         {description}
       </Text>
-      <Button
-        colorScheme={"linkedin"}
-        href={btnLink ? btnLink : null}
-        onClick={btnHandler ? btnHandler : () => {}}
-      >
-        {btnCaption}
-      </Button>
+      <Link href={btnLink ? btnLink : "#"}>
+        <Button
+          colorScheme={"linkedin"}
+          onClick={btnHandler ? btnHandler : () => {}}
+        >
+          {btnCaption}
+        </Button>
+      </Link>
     </VStack>
   );
 }
