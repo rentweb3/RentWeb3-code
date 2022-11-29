@@ -28,7 +28,7 @@ function Navbar() {
   const selectedBlockchainInformation = useSelector(
     (state) => state.blockchain.value
   );
-  const connectedAddress=selectedBlockchainInformation.address;
+  const connectedAddress = selectedBlockchainInformation.address;
   // console.log(selectedBlockchainInformation)
   const web3ModalRef = useRef();
   let connectionCheckerId = 0;
@@ -57,14 +57,14 @@ function Navbar() {
     }
   }
   async function Connect() {
-    changeBlockchain(selectedBlockchain)
+    changeBlockchain(selectedBlockchain);
   }
   useEffect(() => {
     // if (!walletAddress) {
     //   Connect();
     // }
-    
-    changeBlockchain(selectedBlockchain)
+
+    changeBlockchain(selectedBlockchain);
   }, []);
 
   function getMinimalAddress(_adr) {
@@ -76,7 +76,6 @@ function Navbar() {
     if (newBlockchain == "polygon") {
       // alert("We are working to enable polygon soon..");
       // return null;
-
     }
     // console.log(newBlockchain)
     await getCurrentConnectedOwner(
@@ -133,6 +132,8 @@ function Navbar() {
         <Link href="/Create">Create</Link>
         <Link href="/Explore">Explore</Link>
         <Link href="/Deployments">Deployments</Link>
+        <Link href="https://github.com/rentweb3/Rentweb3-docs">Docs</Link>
+
         <Link href="/About">About</Link>
       </HStack>
       <HStack spacing={2}>
@@ -143,7 +144,6 @@ function Navbar() {
           selected={selectedBlockchain}
           textMenu={true}
         />{" "}
-        
         <Button
           colorScheme={"green"}
           _hover={{

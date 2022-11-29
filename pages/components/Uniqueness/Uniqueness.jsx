@@ -13,6 +13,7 @@ function Uniqueness() {
       paddingBottom={"5vh"}
       spacing={5}
       justify={"center"}
+      
     >
       <Center width={"100%"}>
         <Heading fontSize={"3em"}>Our Uniqueness</Heading>
