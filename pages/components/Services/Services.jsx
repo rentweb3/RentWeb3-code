@@ -18,18 +18,22 @@ function Services() {
       bg={"black"}
       color={"white"}
       height={"fit-content"}
+      minH={"100vh"}
       width={"100%"}
       paddingTop={"5vh"}
       paddingBottom={"5vh"}
       spacing={5}
-      backgroundImage={"url(./services_bg.jpg)"}
+      backgroundImage={
+        "url(https://i.pinimg.com/originals/69/44/a7/6944a78b8467f8eea6787a315280e15d.jpg)"
+      }
+      backgroundSize={"cover"}
       justify={"center"}
       borderRadius={"10px"}
       borderBottomLeftRadius={"0"}
       borderBottomRightRadius={"0"}
     >
       <Center width={"100%"}>
-        <Heading fontSize={"3em"}>Our Services</Heading>
+        <Heading fontSize={"3.5em"}>Our Services</Heading>
       </Center>
 
       <Wrap justify={"center"} spacing={5}>

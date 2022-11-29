@@ -25,7 +25,7 @@ function ServiceCard(props) {
       <Heading fontSize={"30px"}>{title}</Heading>
       <Text>{description}</Text>
       <Button
-        color={"black"}
+        colorScheme={"linkedin"}
         href={btnLink ? btnLink : null}
         onClick={btnHandler ? btnHandler : () => {}}
       >

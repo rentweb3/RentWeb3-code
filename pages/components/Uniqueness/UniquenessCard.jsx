@@ -23,8 +23,12 @@ function UnqiuenessCard(props) {
       justify={"center"}
       spacing={5}
     >
-      <Heading fontSize={"30px"}>{title}</Heading>
-      <Text>{description}</Text>
+      <Heading fontWeight={"700"} fontSize={"2rem"}>
+        {title}
+      </Heading>
+      <Text height={"22vh"} fontSize={"1.2rem"}>
+        {description}
+      </Text>
       <Button
         colorScheme={"linkedin"}
         href={btnLink ? btnLink : null}

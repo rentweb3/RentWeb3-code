@@ -6,17 +6,18 @@ function Uniqueness() {
   return (
     <VStack
       bg={"black"}
-      color={"white"}
       height={"fit-content"}
+      minH={"100vh"}
       width={"100%"}
       paddingTop={"5vh"}
       paddingBottom={"5vh"}
       spacing={5}
       justify={"center"}
-      
     >
       <Center width={"100%"}>
-        <Heading fontSize={"3em"}>Our Uniqueness</Heading>
+        <Heading color={"white"} fontSize={"3.5em"}>
+          Our Uniqueness
+        </Heading>
       </Center>
 
       <Wrap justify={"center"} spacing={5}>
@@ -24,28 +25,19 @@ function Uniqueness() {
           <UnqiuenessCard
             title={"Ease of Use"}
             description={
-              "Our platform is easy to use and understand even for a non-technical person. We beleive that creating ease for you will help you to use our platform easily and that is our core value"
+              "Our platform is easy to understand and easy to use even for a non-technical person. We are aiming to provide great value with simple user interface and fast navigation inside the website."
             }
-            btnHandler={() => {
-              alert(
-                "We are currently working on Docs\nThank you for your patience "
-              );
-            }}
+            btnLink={"https://github.com/rentweb3/Rentweb3-docs"}
             btnCaption={"Know More"}
-            bg={"#3182ce"}
+            bg={"#0f4df7"}
           />
         </WrapItem>
         <WrapItem>
           <UnqiuenessCard
             title={"Dapps renting"}
             description={
-              "Currently we are the only platform that provides the renting of Dapps as well as NFTs. We are on our way to implement the usecases of NFTs and we are "
+              "Currently we are the only platform that provides the renting of Dapps as well as NFTs. We are on our way to implement the usecases of NFTs by connecting with various NFT based online games "
             }
-            btnHandler={() => {
-              alert(
-                "We are currently working on Docs\nThank you for your patience "
-              );
-            }}
             btnCaption={"Rent Dapp"}
             btnLink={"/RentDappInformation"}
             bg={"#ff3070"}
@@ -55,14 +47,9 @@ function Uniqueness() {
           <UnqiuenessCard
             title={"Standardized"}
             description={
-              "We follow the standards that has been made for a specific task like using ERC-4907 for NFT Renting whereas the competitors do not do that. Moreover , our smart contracts are well commented and easy to understand"
+              "Following the standards in the code - like using ERC-4907 for NFT Renting , give us an edge over competitors. Moreover , our smart contracts are well commented and easy to understand"
             }
-            btnHandler={() => {
-              alert(
-                "We are currently working on Docs\nThank you for your patience "
-              );
-            }}
-            btnCaption={"See Code"}
+            btnCaption={"View Code"}
             btnLink={
               "https://github.com/rentweb3/RentWeb3-code/tree/master/contracts"
             }
