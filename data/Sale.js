@@ -757,7 +757,7 @@ export const SaleTrackerAddress = "0xCb4b8D2aD6C1B0FbF5d6cD42e8738679E9A50971";
 export const SaleTrackerNileAddress = "TMN4Xc2XUVi4TmiiL7FzwTrYDh1JL7QWA6";
 
 // Shasta
-export const SaleTrackerShastaAddress = null;
+export const SaleTrackerShastaAddress = "TCAVB43es6PJFNyMsDSGcDCsEgCDVXeGpw";
 //
 
 // Polygon
@@ -871,6 +871,9 @@ export const fetchSaleAddresses = async (
       let numSales = await TrackerContract.userNumberOfSales(owner).call();
       let allSales = [];
       //   console.log("Owner has ", numSales, " Sales");
+      numSales=parseInt(numSales);
+
+      if(!numSales)return null;
       for (let index = 0; index < numSales; index++) {
         let SaleAddress = await TrackerContract.userToSale(owner, index).call();
         allSales.push(SaleAddress);
@@ -915,7 +918,7 @@ export const fetchSales = async (
   owner,
   arraySetter,
   Blockchain,
-  finisher
+  loader,
 ) => {
   let websiteRentContract = await getBlockchainSpecificWebsiteRentContract(
     Blockchain,
@@ -935,11 +938,13 @@ export const fetchSales = async (
       arraySetter,
       Blockchain
     ).then(async (Sales) => {
+
       let allSales = [];
       // console.log('iterating over')
       //   console.log("Salesin sale.js");
       if (!Sales || totalSales == 0) {
-        finisher();
+        if(loader)
+        loader(false)
         return null;
       }
       let totalSales = Sales?.length;
@@ -1024,8 +1029,8 @@ export const fetchSales = async (
           if (arraySetter) {
             arraySetter(allSales);
           }
-          if (finisher) {
-            finisher();
+          if (loader) {
+            loader(false);
           }
           return allSales;
         }
@@ -1078,8 +1083,8 @@ export const getCustomNetworkSaleTrackerContract = async (
 
 export const getTronSaleTrackerContract = async (network) => {
   let contractAddress = null;
-  if (network == "nile") {
-    contractAddress = SaleTrackerNileAddress;
+  if (network == "shasta") {
+    contractAddress = SaleTrackerShastaAddress;
   }
   let tronWeb = await getNetworkTronweb(network);
   let contract = await tronWeb.contract().at(contractAddress);

@@ -38,7 +38,7 @@ function Deployments() {
 
   async function init() {
     await getCurrentConnectedOwner(_Blockchain, _NetworkChain, Web3ModalRef);
-    whitelistDeployments.length != 0 && setWhitelistDeployments([]);
+    whitelistDeployments && setWhitelistDeployments([]);
     saleDeployments.length != 0 && setSaleDeployments([]);
     if (!connectedAddress) return null;
     fetchUserDeployments(connectedAddress);
@@ -86,9 +86,7 @@ function Deployments() {
       connectedAddress,
       setSaleDeployments,
       _Blockchain,
-      () => {
-        setLoading(false);
-      }
+      setLoading,
     );
   }
   async function connectWallet() {
@@ -135,7 +133,7 @@ function Deployments() {
             My Deployments
           </Heading>
 
-          {whitelistDeployments.length > 0 ? (
+          { whitelistDeployments && whitelistDeployments.length > 0 ? (
             <Center key={"whitelist container"}>
               <VStack spacing={10}>
                 <Heading>Whitelist Deployments</Heading>

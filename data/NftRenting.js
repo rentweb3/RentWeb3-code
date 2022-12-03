@@ -1076,7 +1076,7 @@ const NftRentingTrackerAddress = "0x65e5bF619B30828EF9dB4747EBD5B02FDE9230fE";
 export const NftRentingTrackerAddressNile =
   "TYTL59rJM8QARL1zXRKkqGTF6EeieU8mXM";
 const NftRentingTrackerAddressShasta =
-  "0x65e5bF619B30828EF9dB4747EBD5B02FDE9230fE";
+  "TBme2Lv64Dki8ev4731p1dcK1FH1XBugxF";
 
 // Polygon
 export const NftRentingTrackerAddressPolygon =
@@ -1107,8 +1107,8 @@ export const getCustomNetworkNFTFactoryContract = async (
 
 async function getTronNetworkNFTTracker(network) {
   let contractAddress = null;
-  if (network == "nile") {
-    contractAddress = NftRentingTrackerAddressNile;
+  if (network == "shasta") {
+    contractAddress = NftRentingTrackerAddressShasta;
   }
   let tronWeb = await getNetworkTronweb(network);
   // let tronWeb = await window.tronLink.tronWeb;
@@ -1330,8 +1330,8 @@ export const rentNft = async (
 
     if (Blockchain == "tron") {
       let trackercontractAddress = null;
-      if (NetworkChain == "nile") {
-        trackercontractAddress = NftRentingTrackerAddressNile;
+      if (NetworkChain == "shasta") {
+        trackercontractAddress = NftRentingTrackerAddressShasta;
       }
       let tronWeb = await window.tronLink.tronWeb;
       let Trackercontract_ = await tronWeb

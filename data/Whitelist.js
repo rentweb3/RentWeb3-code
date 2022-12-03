@@ -356,7 +356,8 @@ export const whitelistTrackerTronNileAddress =
   "TEy4cELfgsoEgiLvsMqwannhXvLz8pYKB9";
 
 // Shasta
-export const whitelistTrackerTronShastaAddress = null;
+export const whitelistTrackerTronShastaAddress =
+  "TBWg7zdN1oBjiMMrWdPQwuTGktPgKJeKC1";
 //
 
 // Polygon
@@ -382,6 +383,11 @@ export const fetchWhitelistAddresses = async (
 
   let allWhitelists = [];
   // console.log("Owner has ", numWhitelists, " Whitelists");
+  numWhitelists = parseInt(numWhitelists);
+  if (!numWhitelists) {
+    // console.log("returning")
+    return [];
+  }
   for (let index = 0; index < numWhitelists; index++) {
     let whitelistAddress = null;
     if (Blockchain == "tron") {
@@ -413,7 +419,7 @@ export async function getBlockchainSpecificWebsiteRentContract(
   let websiteRentContract = null;
   if (Blockchain == "tron") {
     websiteRentContract = await getTronWebsiteRentContract(NetworkChain);
-    console.log({ websiteRentContract });
+    console.log({ NetworkChain, websiteRentContract });
     return websiteRentContract;
   } else if (!Blockchain || Blockchain == "ethereum") {
     websiteRentContract = await getCustomNetworkWebsiteRentContract(
@@ -438,7 +444,7 @@ export async function getBlockchainSpecificWhitelistTrackerContract(
 ) {
   if (Blockchain == "tron") {
     let WhitelistTracker = await getTronWhitelistTrackerContract(NetworkChain);
-    // console.log("want to return whitelistTracker ", WhitelistTracker);
+    console.log("want to return whitelistTracker ", WhitelistTracker);
     return WhitelistTracker;
   } else if (!Blockchain || Blockchain == "ethereum") {
     let WhitelistTracker = await getCustomNetworkWhitelistTrackerContract(
@@ -491,7 +497,8 @@ export const fetchWhitelists = async (
   web3modalRef,
   owner,
   arraySetter,
-  Blockchain
+  Blockchain,
+  
 ) => {
   //   console.log("obtaining whitelists for ", owner);
 
@@ -518,6 +525,14 @@ export const fetchWhitelists = async (
   // console.log("all whitelists are ", whitelists);
   let allWhitelists = [];
   // console.log("iterating over");
+  if (whitelists.length == 0) {
+    // console.log("zero whitelists")
+    if (arraySetter != undefined) {
+      arraySetter(null);
+      
+    }
+    return null;
+  }
   whitelists.map(async (_whitelist, index) => {
     let whitelistContract = await getBlockchainSpecificWhitelistFactoryContract(
       Blockchain,
@@ -529,7 +544,7 @@ export const fetchWhitelists = async (
     let hostedWebsite = "";
     let rentTime = 0;
     if (Blockchain == "tron") {
-      console.log("website rent contract is ", websiteRentContract);
+      // console.log("website rent contract is ", websiteRentContract);
       // console.log("checking website for ", _whitelist);
       hostedWebsite = await websiteRentContract
         .deploymentToWebsite(_whitelist)
@@ -576,7 +591,11 @@ export const fetchWhitelists = async (
         .call();
       startTime = await whitelistContract.startTime().call();
       endTime = await whitelistContract.endTime().call();
-    } else if (!Blockchain || Blockchain == "ethereum" || Blockchain=="polygon") {
+    } else if (
+      !Blockchain ||
+      Blockchain == "ethereum" ||
+      Blockchain == "polygon"
+    ) {
       name = await whitelistContract.name();
       symbol = await whitelistContract.symbol();
       baseURI = await whitelistContract.baseURI();
@@ -598,7 +617,7 @@ export const fetchWhitelists = async (
       owner,
       rentTime: rentTime * 1000,
     };
-    console.log("whitelist instance", whitelistInstance);
+    // console.log("whitelist instance", whitelistInstance);
     allWhitelists.push(whitelistInstance);
     if (index + 1 == whitelists.length) {
       if (arraySetter != undefined) {
@@ -659,11 +678,13 @@ export const getCustomNetworkWhitelistTrackerContract = async (
 
 export const getTronWhitelistTrackerContract = async (network) => {
   let contractAddress = null;
-  if (network == "nile") {
-    contractAddress = whitelistTrackerTronNileAddress;
+  if (network == "shasta") {
+    contractAddress = whitelistTrackerTronShastaAddress;
   }
   let tronWeb = await getNetworkTronweb(network);
+  console.log("getting tracker ");
   let contract = await tronWeb.contract().at(contractAddress);
+  console.log("got ttacker  ",contract)
   return contract;
 };
 export const getTronWhitelistFactory = async (network, contractAddress) => {

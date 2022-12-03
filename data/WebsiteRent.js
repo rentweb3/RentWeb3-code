@@ -261,7 +261,7 @@ export const WebsiteRentAddress = "0x641033186ea3Abb91C0b8EB5b55026457DA804Bd";
 // Nile
 export const WebsiteRentNileAddress = "TGS4a7AhSiKejVgAEXzMiXg87uXvkQ7kEd";
 // Shasta
-export const WebsiteRentShastaAddress = null;
+export const WebsiteRentShastaAddress = "TDk7y2zRA1FxZMnpVbUpiePmNwgH1AQDq7";
 //
 
 // Polygon
@@ -335,8 +335,8 @@ export const getCustomNetworkWebsiteRentContract = async (
 
 export const getTronWebsiteRentContract = async (network) => {
   let contractAddress = null;
-  if (network == "nile") {
-    contractAddress = WebsiteRentNileAddress;
+  if (network == "shasta") {
+    contractAddress = WebsiteRentShastaAddress;
   }
   let tronWeb = await getNetworkTronweb(network);
   let contract = await tronWeb.contract().at(contractAddress);

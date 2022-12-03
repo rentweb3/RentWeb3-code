@@ -2,7 +2,7 @@ import TronWeb from "tronweb";
 import { getMinimalAddress } from "../Utilities";
 import { getCurrentConnectedOwner } from "./blockchainSpecificExports";
 const tronPrivateKey =
-  "70af1c481e52e89ae3bfb5c7a7b3b7a70b29897f558a30c3500099673c0b7277";
+  "9c0bebe2250a767277e0cd5d849d9de28e7bf6353c45b198af6174f355a80ca6";
 
 export const tronConnect = async () => {
   try {

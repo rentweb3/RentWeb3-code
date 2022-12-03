@@ -16,12 +16,12 @@ import DropDownMenu from "../DropDownMenu";
 
 let NetworkChains = {
   ethereum: "goerli",
-  tron: "nile",
+  tron: "shasta",
   polygon: "mumbai",
 };
 function Navbar() {
   const [walletAddress, setWalletAddress] = useState(null);
-  const [selectedBlockchain, setSelectedBlockchain] = useState("tron");
+  const [selectedBlockchain, setSelectedBlockchain] = useState("polygon");
   const dispatch = useDispatch();
   let Blockchain = selectedBlockchain;
   let NetworkChain = NetworkChains[selectedBlockchain];
