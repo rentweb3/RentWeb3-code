@@ -54,6 +54,9 @@ function ExploreDapps(props) {
   const [Blockchain, setBlockchain] = useState(null);
   const [NetworkChain, setNetworkChain] = useState(null);
   const [noDapps, setNoDapps] = useState(false);
+  const [numDappsFetched, setNumDappsFetched] = useState(0);
+  const [totalDapps, setTotalDapps] = useState(2);
+
   let web3ModalRef = useRef();
 
   async function fetchUserDeployments() {
@@ -108,30 +111,30 @@ function ExploreDapps(props) {
 
     // console.log("fetching dapps ");
 
-    await getAllDappsUris(contract, setDappCids, _Blockchain).then(
-      async (cids) => {
-        if (cids.length == 0) {
-          setLoadingMessage(null);
-          allDapps.length !== 0 && setAllDapps([]);
-          dappCids.length !== 0 && setDappCids([]);
-          loader != false && setLoader(false);
+    let cids = await getAllDappsUris(contract, setDappCids, _Blockchain);
+    setTotalDapps(cids.length);
 
-          setNoDapps(true);
-          return null;
-        } else {
-          setLoadingMessage("Time to fetch Available Dapps");
-          await fetchDappsContent(
-            cids,
-            setAllDapps,
-            _NetworkChain,
-            web3ModalRef,
-            _Blockchain
-          );
-        }
+    if (cids.length == 0) {
+      setLoadingMessage(null);
+      allDapps.length !== 0 && setAllDapps([]);
+      dappCids.length !== 0 && setDappCids([]);
+      setLoader(false);
+      setNoDapps(true);
+      return null;
+    } else {
+      // setLoadingMessage("Time to fetch Available Dapps");
 
-        setWebsiteRentContract(contract);
-      }
-    );
+      await fetchDappsContent(
+        cids,
+        setAllDapps,
+        _NetworkChain,
+        web3ModalRef,
+        _Blockchain,
+        setNumDappsFetched
+      );
+    }
+
+    setWebsiteRentContract(contract);
   }
 
   useEffect(() => {
@@ -248,9 +251,19 @@ function ExploreDapps(props) {
           <Heading fontSize={"24px"} height={"50vh"}>
             {loader && dappCids.length > 0
               ? "Fetching your deployments.."
-              : loader && !noDapps && "Loading Available Dapps.."}
+              : loader &&
+                !noDapps && (
+                  <p
+                    style={{
+                      lineHeight: "30px",
+                    }}
+                  >
+                    Loading Available Dapps.. <br />
+                    Fetched {numDappsFetched}/{totalDapps} Dapps
+                  </p>
+                )}
 
-            {!loader && noDapps && "No Available Dapps"}
+            {totalDapps == 0 && noDapps && "No Available Dapps"}
           </Heading>
         )}
       </VStack>
@@ -258,8 +271,8 @@ function ExploreDapps(props) {
         <DappInformationPopup
           displayToggle={() => setSelectedDapp(null)}
           dapp={selectedDapp}
-          sales={saleDeployments.map((item) => item.address)}
-          whitelists={whitelistDeployments.map((item) => item.address)}
+          sales={saleDeployments?.map((item) => item.address)}
+          whitelists={whitelistDeployments?.map((item) => item.address)}
         />
       )}
     </>

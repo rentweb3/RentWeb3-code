@@ -871,9 +871,9 @@ export const fetchSaleAddresses = async (
       let numSales = await TrackerContract.userNumberOfSales(owner).call();
       let allSales = [];
       //   console.log("Owner has ", numSales, " Sales");
-      numSales=parseInt(numSales);
+      numSales = parseInt(numSales);
 
-      if(!numSales)return null;
+      if (!numSales) return null;
       for (let index = 0; index < numSales; index++) {
         let SaleAddress = await TrackerContract.userToSale(owner, index).call();
         allSales.push(SaleAddress);
@@ -918,7 +918,7 @@ export const fetchSales = async (
   owner,
   arraySetter,
   Blockchain,
-  loader,
+  loader
 ) => {
   let websiteRentContract = await getBlockchainSpecificWebsiteRentContract(
     Blockchain,
@@ -932,110 +932,105 @@ export const fetchSales = async (
   );
   try {
     // console.log("fetching array of sales");
-    await fetchSaleAddresses(
+    let Sales = await fetchSaleAddresses(
       TrackerContract,
       owner,
       arraySetter,
       Blockchain
-    ).then(async (Sales) => {
+    );
 
-      let allSales = [];
-      // console.log('iterating over')
-      //   console.log("Salesin sale.js");
-      if (!Sales || totalSales == 0) {
-        if(loader)
-        loader(false)
+    let allSales = [];
+    // console.log('iterating over')
+    //   console.log("Salesin sale.js");
+    let totalSales = Sales?.length;
+    if (!Sales || totalSales == 0) {
+      if (loader) loader(false);
+      return null;
+    }
+
+    for (let index = 0; index < Sales.length; index++) {
+      const _Sale = Sales[index];
+      let hostedWebsite;
+      let rentTime;
+      if (Blockchain == "tron") {
+        hostedWebsite = await websiteRentContract
+          .deploymentToWebsite(_Sale)
+          .call();
+        rentTime = await websiteRentContract.rentTime(hostedWebsite).call();
+      } else if (
+        !Blockchain ||
+        Blockchain == "ethereum" ||
+        Blockchain == "polygon"
+      ) {
+        // console.log("calling deploymentToWebsite from ", websiteRentContract);
+        hostedWebsite = await websiteRentContract.deploymentToWebsite(_Sale);
+        // console.log("_" + hostedWebsite + "_");
+        if (hostedWebsite != "")
+          rentTime = await websiteRentContract.rentTime(hostedWebsite);
+
+        console.log({
+          rentTime,
+          hostedWebsite,
+        });
+      } else {
+        // no support
+      }
+
+      hostedWebsite =
+        rentTime * 1000 > new Date().getTime() ? hostedWebsite : null;
+
+      let SaleContract = await getBlockchainSpecificSaleFactoryContract(
+        Blockchain,
+        NetworkChain,
+        web3modalRef,
+        _Sale
+      );
+      // console.log("sale contract is ", SaleContract);
+      let name, symbol, baseURI, startTime, endTime;
+      if (Blockchain == "tron") {
+        name = await SaleContract.name().call();
+        symbol = await SaleContract.symbol().call();
+        baseURI = await SaleContract.baseURI().call();
+        startTime = await SaleContract.startTime().call();
+        endTime = await SaleContract.endTime().call();
+      } else if (
+        !Blockchain ||
+        Blockchain == "ethereum" ||
+        Blockchain == "polygon"
+      ) {
+        name = await SaleContract.name();
+        symbol = await SaleContract.symbol();
+        baseURI = await SaleContract.baseURI();
+        startTime = await SaleContract.startTime();
+        endTime = await SaleContract.endTime();
+      } else {
         return null;
       }
-      let totalSales = Sales?.length;
-      // console.log("total sales are ", totalSales);
 
-      // console.log("sales are ", Sales);
-      Sales.map(async (_Sale, index) => {
-        let hostedWebsite;
-        let rentTime;
-        if (Blockchain == "tron") {
-          hostedWebsite = await websiteRentContract
-            .deploymentToWebsite(_Sale)
-            .call();
-
-          rentTime = await websiteRentContract.rentTime(hostedWebsite).call();
-        } else if (
-          !Blockchain ||
-          Blockchain == "ethereum" ||
-          Blockchain == "polygon"
-        ) {
-          // console.log("calling deploymentToWebsite from ", websiteRentContract);
-          hostedWebsite = await websiteRentContract.deploymentToWebsite(_Sale);
-          // console.log("_" + hostedWebsite + "_");
-          if (hostedWebsite != "")
-            rentTime = await websiteRentContract.rentTime(hostedWebsite);
-
-          console.log({
-            rentTime,
-            hostedWebsite,
-          });
-        } else {
-          // no support
+      let SaleInstance = {
+        id: index + 1,
+        name,
+        symbol,
+        baseURI,
+        address: _Sale,
+        website: !hostedWebsite || hostedWebsite === "" ? null : hostedWebsite,
+        startTime,
+        endTime,
+        owner,
+        rentTime: rentTime * 1000,
+      };
+      // console.log("Sale instance", SaleInstance);
+      allSales.push(SaleInstance);
+      if (index + 1 == totalSales) {
+        if (arraySetter) {
+          arraySetter(allSales);
         }
-
-        hostedWebsite =
-          rentTime * 1000 > new Date().getTime() ? hostedWebsite : null;
-
-        let SaleContract = await getBlockchainSpecificSaleFactoryContract(
-          Blockchain,
-          NetworkChain,
-          web3modalRef,
-          _Sale
-        );
-        // console.log("sale contract is ", SaleContract);
-        let name, symbol, baseURI, startTime, endTime;
-        if (Blockchain == "tron") {
-          name = await SaleContract.name().call();
-          symbol = await SaleContract.symbol().call();
-          baseURI = await SaleContract.baseURI().call();
-          startTime = await SaleContract.startTime().call();
-          endTime = await SaleContract.endTime().call();
-        } else if (
-          !Blockchain ||
-          Blockchain == "ethereum" ||
-          Blockchain == "polygon"
-        ) {
-          name = await SaleContract.name();
-          symbol = await SaleContract.symbol();
-          baseURI = await SaleContract.baseURI();
-          startTime = await SaleContract.startTime();
-          endTime = await SaleContract.endTime();
-        } else {
-          return null;
+        if (loader) {
+          loader(false);
         }
-
-        let SaleInstance = {
-          id: index + 1,
-          name,
-          symbol,
-          baseURI,
-          address: _Sale,
-          website:
-            !hostedWebsite || hostedWebsite === "" ? null : hostedWebsite,
-          startTime,
-          endTime,
-          owner,
-          rentTime: rentTime * 1000,
-        };
-        // console.log("Sale instance", SaleInstance);
-        allSales.push(SaleInstance);
-        if (index + 1 == totalSales) {
-          if (arraySetter) {
-            arraySetter(allSales);
-          }
-          if (loader) {
-            loader(false);
-          }
-          return allSales;
-        }
-      });
-    });
+        return allSales;
+      }
+    }
   } catch (e) {
     console.log("unable to fetch deploymments", e);
   }

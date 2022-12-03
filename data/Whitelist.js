@@ -432,7 +432,7 @@ export async function getBlockchainSpecificWebsiteRentContract(
       NetworkChain,
       web3modalRef
     );
-    console.log("website rent contract returning ", websiteRentContract);
+    // console.log("website rent contract returning ", websiteRentContract);
     return websiteRentContract;
   }
   return websiteRentContract;
@@ -444,7 +444,7 @@ export async function getBlockchainSpecificWhitelistTrackerContract(
 ) {
   if (Blockchain == "tron") {
     let WhitelistTracker = await getTronWhitelistTrackerContract(NetworkChain);
-    console.log("want to return whitelistTracker ", WhitelistTracker);
+    // console.log("want to return whitelistTracker ", WhitelistTracker);
     return WhitelistTracker;
   } else if (!Blockchain || Blockchain == "ethereum") {
     let WhitelistTracker = await getCustomNetworkWhitelistTrackerContract(
@@ -497,8 +497,7 @@ export const fetchWhitelists = async (
   web3modalRef,
   owner,
   arraySetter,
-  Blockchain,
-  
+  Blockchain
 ) => {
   //   console.log("obtaining whitelists for ", owner);
 
@@ -529,11 +528,13 @@ export const fetchWhitelists = async (
     // console.log("zero whitelists")
     if (arraySetter != undefined) {
       arraySetter(null);
-      
     }
     return null;
   }
-  whitelists.map(async (_whitelist, index) => {
+
+  for (let index = 0; index < whitelists.length; index++) {
+    const _whitelist = whitelists[index];
+
     let whitelistContract = await getBlockchainSpecificWhitelistFactoryContract(
       Blockchain,
       NetworkChain,
@@ -624,7 +625,7 @@ export const fetchWhitelists = async (
         arraySetter(allWhitelists);
       }
     }
-  });
+  }
   // console.log("returning");
   return allWhitelists;
 };
@@ -682,9 +683,9 @@ export const getTronWhitelistTrackerContract = async (network) => {
     contractAddress = whitelistTrackerTronShastaAddress;
   }
   let tronWeb = await getNetworkTronweb(network);
-  console.log("getting tracker ");
+  // console.log("getting tracker ");
   let contract = await tronWeb.contract().at(contractAddress);
-  console.log("got ttacker  ",contract)
+  // console.log("got ttacker  ", contract);
   return contract;
 };
 export const getTronWhitelistFactory = async (network, contractAddress) => {

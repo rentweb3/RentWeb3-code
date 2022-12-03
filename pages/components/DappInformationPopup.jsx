@@ -36,7 +36,7 @@ function DappInformationPopup(props) {
     // alert("purchasing...");
     setPurchaseWill(true);
   }
-  console.log("showing dapp ", dapp);
+  // console.log("showing dapp ", dapp);
   function getCurrency() {
     if (Blockchain == "tron") return "TRX";
     else if (Blockchain == "ethereum") return "ETH";

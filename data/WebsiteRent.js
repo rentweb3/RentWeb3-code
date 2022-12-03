@@ -256,7 +256,7 @@ export const WebsiteRentBytecode = {
 };
 // Ethereum
 // Goerli Network Deployed Address
-export const WebsiteRentAddress = "0x641033186ea3Abb91C0b8EB5b55026457DA804Bd";
+export const WebsiteRentAddress = "0x67e545cE687146Da0B36Dea96684E267Dac8a138";
 // Tron
 // Nile
 export const WebsiteRentNileAddress = "TGS4a7AhSiKejVgAEXzMiXg87uXvkQ7kEd";

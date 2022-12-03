@@ -62,7 +62,8 @@ export const fetchDappsContent = async (
   setter,
   NetworkChain,
   web3modalRef,
-  Blockchain
+  Blockchain,
+  numDappsFetchedSetter
 ) => {
   let dappArray = [];
   let websiteRentContract = await getBlockchainSpecificWebsiteRentContract(
@@ -71,7 +72,9 @@ export const fetchDappsContent = async (
     web3modalRef
   );
 
-  await Cids.map(async (cid, index) => {
+  let totalCids = Cids.length;
+  for (let index = 0; index < totalCids; index++) {
+    let cid = Cids[index];
     let _link = `https://${cid}.ipfs.w3s.link/metadata.json`;
     const response = await axios.get(_link);
     let dapp = response.data;
@@ -105,7 +108,8 @@ export const fetchDappsContent = async (
       if (setter) setter(dappArray);
       return dappArray;
     }
-  });
+    numDappsFetchedSetter(index + 1);
+  }
   return dappArray;
 };
 export function getImageLinkFromIPFS(cid) {
