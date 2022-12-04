@@ -63,11 +63,9 @@ export const getProviderOrSigner = async (network, web3ModalRef) => {
     const { chainId } = await web3Provider?.getNetwork();
 
     if (network == "goerli" && chainId && chainId !== 5) {
-      window.alert("Please Change the network to Goerli");
       return null;
     }
     if (network == "mumbai" && chainId && chainId !== 80001) {
-      window.alert("Please Change the network to Mumbai");
       return null;
     }
 

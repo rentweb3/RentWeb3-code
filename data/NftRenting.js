@@ -1071,12 +1071,11 @@ export const NftRentingTrackerABI = [
 ];
 // Deployment Addresses
 // Ethereum
-const NftRentingTrackerAddress = "0x65e5bF619B30828EF9dB4747EBD5B02FDE9230fE";
+const NftRentingTrackerAddress = "0x1F4BDf9f1fF8A1609697021b2C97d33e41A1856a";
 // Tron
 export const NftRentingTrackerAddressNile =
   "TYTL59rJM8QARL1zXRKkqGTF6EeieU8mXM";
-const NftRentingTrackerAddressShasta =
-  "TBme2Lv64Dki8ev4731p1dcK1FH1XBugxF";
+const NftRentingTrackerAddressShasta = "TBme2Lv64Dki8ev4731p1dcK1FH1XBugxF";
 
 // Polygon
 export const NftRentingTrackerAddressPolygon =
@@ -1089,7 +1088,7 @@ export const getCustomNetworkNFTFactoryContract = async (
 ) => {
   let signer = await getProviderOrSigner(network, web3modalRef);
   if (!signer) return null;
-  console.log("signer is ", signer);
+  // console.log("signer is ", signer);
   let nftFactory = new ethers.ContractFactory(
     NftRentingFactoryABI,
     NftRentingFactoryBytecode.object,

@@ -55,7 +55,7 @@ function ExploreDapps(props) {
   const [NetworkChain, setNetworkChain] = useState(null);
   const [noDapps, setNoDapps] = useState(false);
   const [numDappsFetched, setNumDappsFetched] = useState(0);
-  const [totalDapps, setTotalDapps] = useState(2);
+  const [totalDapps, setTotalDapps] = useState(0);
 
   let web3ModalRef = useRef();
 
@@ -112,7 +112,6 @@ function ExploreDapps(props) {
     // console.log("fetching dapps ");
 
     let cids = await getAllDappsUris(contract, setDappCids, _Blockchain);
-    setTotalDapps(cids.length);
 
     if (cids.length == 0) {
       setLoadingMessage(null);
@@ -123,7 +122,7 @@ function ExploreDapps(props) {
       return null;
     } else {
       // setLoadingMessage("Time to fetch Available Dapps");
-
+      setTotalDapps(cids.length);
       await fetchDappsContent(
         cids,
         setAllDapps,
@@ -249,7 +248,7 @@ function ExploreDapps(props) {
           </Wrap>
         ) : (
           <Heading fontSize={"24px"} height={"50vh"}>
-            {loader && dappCids.length > 0
+            {totalDapps == 0 && loader && dappCids.length > 0
               ? "Fetching your deployments.."
               : loader &&
                 !noDapps && (
@@ -259,7 +258,8 @@ function ExploreDapps(props) {
                     }}
                   >
                     Loading Available Dapps.. <br />
-                    Fetched {numDappsFetched}/{totalDapps} Dapps
+                    {totalDapps !== 0 &&
+                      `Fetched ${numDappsFetched}/${totalDapps} Dapps`}
                   </p>
                 )}
 

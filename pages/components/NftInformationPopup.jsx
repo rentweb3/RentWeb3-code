@@ -54,7 +54,8 @@ function NftInformationPopup(props) {
 
   let ErcContractAddress = Nft?.erc721ContractAddress;
   let owner = Nft?.owner;
-  if (owner) owner = fromHex(owner);
+  if (Blockchain == "tron" && owner) owner = fromHex(owner);
+
   let DisplayToggle = displayToggle;
 
   let web3ModalRef = useRef();
@@ -67,11 +68,11 @@ function NftInformationPopup(props) {
   }
   function getCurrency() {
     switch (Blockchain) {
-      case "Ethereum" || "ethereum":
+      case "ethereum":
         return "Eth";
-      case "tron" || "Tron":
+      case "tron":
         return "TRX";
-      case "polygon" || "Polygon":
+      case "polygon":
         return "MATIC";
 
       default:
@@ -92,7 +93,7 @@ function NftInformationPopup(props) {
       totalPrice,
       setStatus,
       router.push,
-      "/Explore"
+      "/ExploreNfts"
     );
   }
   async function connectWallet() {
@@ -168,7 +169,7 @@ function NftInformationPopup(props) {
               >
                 <b>Rent Price : </b>
                 <Text>
-                  {rentPrice + " "} {getCurrency()}
+                  {rentPrice + " "} {getCurrency(Blockchain)}
                 </Text>
               </HStack>
               <HStack align={"center"} justify="space-between">
@@ -253,7 +254,7 @@ function NftInformationPopup(props) {
             <NamedInput title={"Price to Pay"}>
               <Input
                 readOnly
-                value={rentPrice * rentDays + " " + getCurrency()}
+                value={rentPrice * rentDays + " " + getCurrency(Blockchain)}
               />
             </NamedInput>
             <HStack width={"50vw"} justify={"space-between"}>

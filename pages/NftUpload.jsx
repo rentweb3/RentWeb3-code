@@ -233,7 +233,7 @@ function NftUpload(props) {
         web3ModelRef
       );
 
-      console.log("factory obtained  ", fact);
+      // console.log("factory obtained  ", fact);
       setFactoryContract(fact);
     }
     await getBlockchainSpecificNFTTracker(
@@ -241,7 +241,7 @@ function NftUpload(props) {
       _NetworkChain,
       web3ModelRef
     ).then((contract) => {
-      console.log("NFT tracker contract is ", contract);
+      // console.log("NFT tracker contract is ", contract);
       getAllContractTokens(contract, null, _Blockchain).then(
         (_contractTokens) => {
           if (!_contractTokens) {
@@ -249,8 +249,8 @@ function NftUpload(props) {
             setContractAddress(null);
             return 0;
           }
-          console.log("The all contrac tokens are", _contractTokens);
-          console.log("The all addresses are", Object.keys(_contractTokens));
+          // console.log("The all contrac tokens are", _contractTokens);
+          // console.log("The all addresses are", Object.keys(_contractTokens));
           let arr = Object.keys(_contractTokens).map((item) => item);
           setContractTokens(_contractTokens);
           setContractAddresses(arr);
@@ -436,8 +436,8 @@ function NftUpload(props) {
     );
   }
   async function StoreUpdatedcontractsOnIpfs() {
-    console.log("previous contracts are ", contractAddresses);
-    console.log("current contract address", contractAddress);
+    // console.log("previous contracts are ", contractAddresses);
+    // console.log("current contract address", contractAddress);
     let uniqueContracts = [...contractAddresses];
     let exists = false;
     uniqueContracts.map((item) => {
@@ -446,8 +446,8 @@ function NftUpload(props) {
       }
     });
     if (!exists) uniqueContracts.push(contractAddress);
-    console.log("\n\n------\nUnique Contracts to upload", uniqueContracts);
-    console.log("\n\n\n");
+    // console.log("\n\n------\nUnique Contracts to upload", uniqueContracts);
+    // console.log("\n\n\n");
 
     const _blob = new Blob(
       [

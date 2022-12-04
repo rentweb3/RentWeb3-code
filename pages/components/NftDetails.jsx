@@ -1,19 +1,13 @@
-import {
-  Button,
-  Heading,
-  HStack,
-  Img,
-  VStack,
-} from "@chakra-ui/react";
+import { Button, Heading, HStack, Img, VStack } from "@chakra-ui/react";
 import React from "react";
 import { useRef } from "react";
 import { useState, useEffect } from "react";
 import { getIpfsImageLink } from "../../data/ipfsStuff";
-let NetwokChain = "goerli";
+
 function NftDetails(props) {
   const [loading, setLoading] = useState(true);
-  let NFT=props.NFT;
-  let selector=props.selector;
+  let NFT = props.NFT;
+  let selector = props.selector;
   let Nft = { ...NFT };
   const [tokenMetadataArray, setTokenMetadataArray] = useState(null);
   const [contractName, setContractName] = useState(null);
@@ -55,12 +49,10 @@ function NftDetails(props) {
       />
       <HStack spacing={5}>
         <Heading textTransform={"capitalize"} fontSize={"20px"}>
-          {
-            Nft?.name
-          }
+          {Nft?.name}
         </Heading>
         {!Nft?.rented ? (
-          <Button size={"sm"}  colorScheme={"green"} textColor={"white"}>
+          <Button size={"sm"} colorScheme={"green"} textColor={"white"}>
             Available
           </Button>
         ) : (
