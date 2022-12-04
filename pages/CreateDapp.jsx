@@ -37,6 +37,7 @@ function CreateDapp(props) {
   const selectedBlockchainInformation = useSelector(
     (state) => state.blockchain.value
   );
+
   let Blockchain = selectedBlockchainInformation.name;
   let NetworkChain = selectedBlockchainInformation.network;
   let connectedAddress = selectedBlockchainInformation.address;
@@ -50,6 +51,8 @@ function CreateDapp(props) {
   const [loader, setLoader] = useState(false);
   const [formStep, setFormStep] = useState(1);
   const [type, setType] = useState("sale");
+  // console.log({ type });
+
   const router = useRouter();
   const Web3ModalRef = useRef();
   const [websiteRentContract, setWebsiteRentContract] = useState(null);
@@ -335,16 +338,16 @@ function CreateDapp(props) {
                 <RadioGroup defaultValue="2">
                   <HStack spacing={10}>
                     <Radio
-                      onClick={() =>
-                        type !== "whitelist" && setType("whitelist")
-                      }
+                      onClick={() => setType("whitelist")}
+                      onChange={() => setType("whitelist")}
                       colorScheme="green"
                       value="1"
                     >
                       Whitelist
                     </Radio>
                     <Radio
-                      onClick={() => type !== "sale" && setType("sale")}
+                      onClick={() => setType("sale")}
+                      onChange={() => setType("sale")}
                       colorScheme="green"
                       value="2"
                     >

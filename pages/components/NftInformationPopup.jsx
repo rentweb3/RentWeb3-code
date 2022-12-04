@@ -93,7 +93,7 @@ function NftInformationPopup(props) {
       totalPrice,
       setStatus,
       router.push,
-      "/ExploreNfts"
+      "/Explore"
     );
   }
   async function connectWallet() {

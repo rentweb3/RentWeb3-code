@@ -84,7 +84,12 @@ function IntegrateFrontend(props) {
           gasLimit: 3000000,
           value: parseEther(price.toString()),
         };
-
+        console.log({
+          websiteURL,
+          selectedDeployment,
+          days,
+          options,
+        });
         let tx = await websiteRentContract.rentDapp(
           websiteURL,
           selectedDeployment,

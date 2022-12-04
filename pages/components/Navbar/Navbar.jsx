@@ -22,6 +22,8 @@ let NetworkChains = {
 function Navbar() {
   const [walletAddress, setWalletAddress] = useState(null);
   const [selectedBlockchain, setSelectedBlockchain] = useState("polygon");
+  const alerter = useRef();
+
   const dispatch = useDispatch();
   let Blockchain = selectedBlockchain;
   let NetworkChain = NetworkChains[selectedBlockchain];
@@ -57,6 +59,7 @@ function Navbar() {
     }
   }
   async function Connect() {
+    alerter.current = false;
     changeBlockchain(selectedBlockchain);
   }
   useEffect(() => {
@@ -73,16 +76,25 @@ function Navbar() {
     return adr.slice(0, 6) + ".." + adr.slice(40);
   }
   async function changeBlockchain(newBlockchain) {
-    if (newBlockchain == "polygon") {
-      // alert("We are working to enable polygon soon..");
-      // return null;
-    }
-    // console.log(newBlockchain)
     await getCurrentConnectedOwner(
       newBlockchain,
       NetworkChains[newBlockchain],
       web3ModalRef
     ).then((user_) => {
+      if (user_ == null) {
+        if (!alerter.current) {
+          if (NetworkChains[newBlockchain] == "mumbai") {
+            alert("Please change to Mumbai testnet");
+          }
+          if (NetworkChains[newBlockchain] == "goerli") {
+            alert("Please change to goerli testnet");
+          }
+
+          alerter.current = true;
+        }
+      } else {
+        alerter.current = false;
+      }
       dispatch(
         updateBlockchain({
           name: newBlockchain,
